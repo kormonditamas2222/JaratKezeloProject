@@ -11,12 +11,19 @@ namespace JaratKezeloProject.Tests
     public class JaratKezeloTest
     {
         static JaratKezelo jk = new();
+        
+        [Test]
+        public void HelyesJaratokRepuloterrol()
+        {
+            jk.UjJarat("Feri", "BUD", "LAX", new DateTime(2023, 10, 12, 12, 0, 0));
+            jk.UjJarat("Béla", "BUD", "LAX", new DateTime(2024, 10, 12, 12, 0, 0));
+
+            Assert.That(jk.JaratokRepuloterrol("BUD"), Is.EqualTo(new List<string>(["Feri", "Béla"])));
+        }
         [Test]
         public void HelyesMikorIndul()
-        {
-            jk.UjJarat("Pista", "BUD", "LAX", new DateTime(2023, 10, 12, 12, 0, 0));
-
-            Assert.That(jk.MikorIndul("Pista"), Is.EqualTo(new DateTime(2023, 10, 12, 12, 0, 0)));
+        { 
+            Assert.That(jk.MikorIndul("Feri"), Is.EqualTo(new DateTime(2023, 10, 12, 12, 0, 0)));
         }
     }
 }
