@@ -25,9 +25,9 @@
             {
                 if (item.JaratSzam == jaratSzam)
                 {
-                    if (item.Keses-keses < 0)
+                    if (item.Keses+keses < 0)
                     {
-                        throw new NegativKesesException(item.Keses - keses);
+                        throw new NegativKesesException("Késés nem lehet negatív.");
                     }
                     item.Keses += keses;
                 }
@@ -59,7 +59,7 @@
     }
     class NegativKesesException : Exception
     {
-        public NegativKesesException(int osszKeses) : base("Nem lehet negatív késés érték: " + osszKeses)
+        public NegativKesesException(string message) : base(message)
         {
         }
     }

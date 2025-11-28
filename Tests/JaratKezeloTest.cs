@@ -25,5 +25,29 @@ namespace JaratKezeloProject.Tests
         { 
             Assert.That(jk.MikorIndul("Feri"), Is.EqualTo(new DateTime(2023, 10, 12, 12, 0, 0)));
         }
+        [Test]
+        public void UgyanazAJaratszam()
+        {
+            Assert.Throws<ArgumentException>(() =>
+            {
+                jk.UjJarat("Feri", "BUD", "LAX", new DateTime(2023, 10, 12, 12, 0, 0));
+            });
+        }
+        [Test]
+        public void HelytelenKeses()
+        {
+            Assert.Throws<NegativKesesException>(() =>
+            {
+                jk.Keses("Feri", -10);
+            });
+        }
+        [Test]
+        public void HelytelenMikorIndul()
+        {
+            Assert.Throws<ArgumentException>(() =>
+            {
+                jk.MikorIndul("Dániel");
+            });
+        }
     }
 }
