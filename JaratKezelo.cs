@@ -30,6 +30,29 @@
                 }
             }
         }
+        public DateTime MikorIndul(string jaratSzam)
+        {
+            foreach (var item in jaratok)
+            {
+                if (item.JaratSzam == jaratSzam)
+                {
+                    return item.Indulas.AddMinutes(item.Keses);
+                }
+            }
+            throw new ArgumentException("Nincs ehhez a járathoz tartozó időpont.");
+        }
+        public List<string> JaratokRepuloterrol(string repter)
+        {
+            List<string> jaratokOnnan = [];
+            foreach (var item in jaratok)
+            {
+                if (item.HonnanRepter == repter)
+                {
+                    jaratokOnnan.Add(item.JaratSzam);
+                }
+            }
+            return jaratokOnnan;
+        }
     }
     class NegativKesesException : Exception
     {
