@@ -2,16 +2,19 @@
 {
     public class JaratKezelo
     {
-        private List<Jarat> jaratok;
+        private List<Jarat> jaratok = new List<Jarat>();
 
-        public void ujJarat(string jaratSzam, string repterHonnan, string repterHova, DateTime indulas)
+        public void UjJarat(string jaratSzam, string repterHonnan, string repterHova, DateTime indulas)
         {
             Jarat jarat = new(jaratSzam, repterHonnan, repterHova, indulas, 0);
-            foreach (var item in jaratok)
+            if (jaratok != null) 
             {
-                if (item.JaratSzam == jarat.JaratSzam)
+                foreach (var item in jaratok)
                 {
-                    throw new ArgumentException("A járatszámnak egyedinek kell lennie!");
+                    if (item.JaratSzam == jarat.JaratSzam)
+                    {
+                        throw new ArgumentException("A járatszámnak egyedinek kell lennie!");
+                    }
                 }
             }
             jaratok.Add(jarat);
